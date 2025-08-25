@@ -1,4 +1,3 @@
 # MR 2nd Hello World
-name = input("Give me your name: ")
-Hello= input("Hello")
-print = name
+name = input("What is your name: ")
+print ("Hello", name )
