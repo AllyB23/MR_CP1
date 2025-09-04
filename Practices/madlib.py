@@ -1,7 +1,7 @@
 # MR 2nd madlib
 
 Adjective= input("Give me an adjective: ")
-Noun= input("Give me a Noun: ")
+Noun= input("Give me a noun: ")
 Color= input("Give me a Color: ")
 Animal= input("Give me an Animal: ")
 Verb= input("Give me a Verb: ")
