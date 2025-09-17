@@ -4,3 +4,5 @@ print("test")
 #print() <= Everything inside the parenthesis appears in the terminal
 color = input("Give me a color: ")
 print(color)
+print("New Seat 9/17")
+print("Heyyyyyyy")
