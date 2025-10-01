@@ -1,5 +1,6 @@
 # MR 2nd Fix game assignment
 # One of the bugs was that the number that the user inputed has to be a float.
+# Another one of the bugs was one ;one 18 they needed an Elif instead of an if.
 
 import random
 def start_game():
@@ -14,7 +15,7 @@ def start_game():
         if attempts >= max_attempts:
             print(f"Sorry, you've used all {max_attempts} attempts. the number was {number_to_guess}.")
             game_over = True
-        if guess == number_to_guess:
+        elif guess == number_to_guess:
             print("Congratulations! You've guessed the number!")
             game_over = True
         elif guess > number_to_guess:
