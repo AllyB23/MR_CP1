@@ -3,10 +3,10 @@
 #Put your shopping list variable here
 shopping_list= []
 while True:
-    action = input("\nWhat would you like to do to your shopping list?\nAdd to my list\nRemove from my list\nView my list\n Exit my list\n").strip().lower()
+    action = input("\nWhat would you like to do to your shopping list?\nAdd\nRemove\nView\nExit\n").strip().lower()
     print(action)
     
-    if action =="remove from my list" and not shopping_list:
+    if action =="Remove" and not shopping_list:
         print("Your shopping list is empty, cannot remove from your list.\n")
     elif action == "add":
         added_item = input("What would you like to add to your shopping list?\n").strip().capitalize()
