@@ -19,7 +19,7 @@ elif roll+atck_bonus > 10:
     print(f"you did {attack} damage to the monster!")
 elif roll <=10:
     if roll == 1:
-        print(f"You rolled a cirtical failure! The monster gets a free attack!")
+        print(f"You rolled a critical failure! The monster gets a free attack!")
         damage = (random.randint(1,10) +2)
         player_hp -= damage
         print(f(f"You took {damage} you now have {player_hp} HP,"))

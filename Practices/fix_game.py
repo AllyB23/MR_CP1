@@ -1,6 +1,6 @@
 # MR 2nd Fix game assignment
 # One of the bugs was that the number that the user inputed has to be a float.
-# Another one of the bugs was one ;one 18 they needed an Elif instead of an if.
+# Another one of the bugs was on line 18 they needed an Elif instead of an if.
 
 import random
 def start_game():
