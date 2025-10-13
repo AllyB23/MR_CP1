@@ -1,50 +1,85 @@
 # MR 2nd password strength checker
 import string
 
-# We set up and input for the user to input their password and establish a variable for the total score of their password strength
+# We set up an input for the user to input their password and establish a variable for the total score of their password strength
 password = input("Please enter a password: ")
 strength_score = 0
-# After they have entered a password we have to check if the passwor di s long enough
+length = 0
+upper = 0
+lower = 0
+digit = 0
+special = 0
+# After they have entered a password we have to check if the password is long enough
 if password:
     print("Thank you for entering your password!")
 else:
     print("No password entered.")
 
+def check_password_length(password):
+    global length
+    # Checks if a password has atleast 8 characters
+    if len(password) >=8:
+        length = True
+    else:
+        length = False
+    
+if length == False:
+    print("Your password is not long enough")
+if length  == True:
+    print("Yes, your password is long enough")
+    strength_score =+ 1
+
+
 # if it is long enough we have to check if there is an uppercase letter in the password
 def has_uppercase_loop(password):
+    global upper
     for char in password:
         if char.isupper():
-            return True
-    return False
-if False:
-    print("-1")
-if True:
-    print("+1")
+            upper = True
+    upper = False
+if upper == False:
+    print("Your password does not have an uppercase letter")
+if upper == True:
+    print("Yes, Contains uppercase")
+    strength_score += 1
 # After that we check if the password contans a lowercase letters
 def has_lowercase(password):
-    return any(char.islower() for char in password)
+    global lower
+    lower = any(char.islower() for char in password)
+if lower == False:
+    print("Your password does not have a lowercase letter")
+if lower == True:
+    print("Yes, contains lowercase")
+    strength_score += 1
 
 # After that we check if the password contains atleast one number 
 def has_digit_loop(password):
+    global digit
+    digit = False
     for char in password:
         if char.isdigit():
-            return True
-        return False
-if False:
-    print("-1")
-if True:
-    print("+1")
+            digit = True
+            break
+        return digit
+if digit == False:
+    print("Your password does not contain a number")
+if digit == True:
+    print("Yes, contains a number")
+    strength_score += 1
 
 # after that we check if the password contains at least one special character
 def has_special_character(password):
+    global special
     special_chars = string.punctuation
     for char in password:
-        return True
-    return False
-if True:
-    print("+1")
-if False:
-    print("-1")
+        special = True
+    special = False
+if special == True:
+    print("Yes, contains special character")
+    strength_score =+ 1
+if special == False:
+    print("Your password does not have a special character")
 
 #  After the password is checked and all of those things are true we respond to the user and tell them that there password is strong
-# If there password does not check some of those if and elifs then we msut tell them their strength score
+print(f"Your password has a {strength_score} strength score.")
+# If there password does not check some of those if and elifs then we must tell them their strength score
