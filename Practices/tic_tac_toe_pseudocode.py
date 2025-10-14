@@ -17,5 +17,5 @@
     #print the board with the 1 marked off 
     # print the choice of the computer which is random 
 # Once a choice is taken on the board it can not be used again.
-# We need to make sure the the choice of the cumputer is different frrom th eusers choice
+# We need to make sure the the choice of the computer is different frrom the users choice
 # print 

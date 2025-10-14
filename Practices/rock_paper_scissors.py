@@ -4,21 +4,28 @@ import time
 
 print("Welcome to Rock Paper Scissors")
 
-options = ["Rock", "Paper", "Scissors"]
+options = ["rock", "paper", "scissors"]
 
 while True:
-    print("What would you like to do? ")
-    choice = input("Enter your choice(1-4): ")
+    user = input( "rock, paper, scissors, or exit: ")
 
-    if choice is "1":
-        print("You chose Rock!")
+    if user == "exit":
+        print("Thank you for playing!")
+        break
+    if user not in options:
+        print("That's not one of the choices. ")
+        continue
 
-        if choice is "2":
-            print("You chose Paper!")
+    com = random.choice(options)
+    print(f"I chose {com}. ")
 
-            if choice is "3":
-                print("You chose Scissors!")
+    if user == com:
+        print("It's a tie!\n")
+    elif (user == "rock" and com =="scissors") or \
+         (user == "scissors" and com =="paper") or \
+         (user == "paper" and com =="rock"):
+         print("You win!\n")
+    else:
+        print("You lose...")
 
-                if choice is "4":
-                    print("Thank you for playing!")
 
