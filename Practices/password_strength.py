@@ -10,26 +10,17 @@ lower = 0
 digit = 0
 special = 0
 # After they have entered a password we have to check if the password is long enough
-if password:
-    print("Thank you for entering your password!")
-else:
-    print("No password entered.")
-
 def check_password_length(password):
-    global length
-    # Checks if a password has atleast 8 characters
+
     if len(password) >=8:
-        length = True
+        return True
     else:
-        length = False
-    
-if length == False:
-    print("Your password is not long enough")
-if length  == True:
-    print("Yes, your password is long enough")
-    strength_score =+ 1
-
-
+        return False
+        if True:
+            print("Your password is long enough, +1")
+            strength_score += 1
+        if False:
+            print("Your password is not long enough, -1")
 # if it is long enough we have to check if there is an uppercase letter in the password
 def has_uppercase_loop(password):
     global upper
@@ -81,5 +72,5 @@ if special == False:
     print("Your password does not have a special character")
 
 #  After the password is checked and all of those things are true we respond to the user and tell them that there password is strong
-print(f"Your password has a {strength_score} strength score.")
+print(f"Your password has a {strength_score}/5 strength score.")
 # If there password does not check some of those if and elifs then we must tell them their strength score
