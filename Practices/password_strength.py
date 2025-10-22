@@ -1,76 +1,67 @@
-# MR 2nd password strength checker
+#MR 2nd passwrod strength project
+# In all of these if statements we tell the user we add 1 point or subtract one point from their strentgh score
+
 import string
 
 # We set up an input for the user to input their password and establish a variable for the total score of their password strength
 password = input("Please enter a password: ")
 strength_score = 0
-length = 0
-upper = 0
-lower = 0
-digit = 0
-special = 0
-# After they have entered a password we have to check if the password is long enough
-def check_password_length(password):
 
-    if len(password) >=8:
-        return True
-    else:
-        return False
-        if True:
-            print("Your password is long enough, +1")
-            strength_score += 1
-        if False:
-            print("Your password is not long enough, -1")
-# if it is long enough we have to check if there is an uppercase letter in the password
-def has_uppercase_loop(password):
-    global upper
-    for char in password:
-        if char.isupper():
-            upper = True
-    upper = False
-if upper == False:
-    print("Your password does not have an uppercase letter")
-if upper == True:
+# we first check password length using an if statement
+if len(password) >= 8:
+    print("Your password is long enough, +1")
+    strength_score += 1
+else:
+    print("Your password is not long enough, -1")
+
+# we then check for uppercase letters using an if statement
+upper_found = False
+for char in password:
+    if char.isupper():
+        upper_found = True
+        break
+if upper_found:
     print("Yes, Contains uppercase")
     strength_score += 1
-# After that we check if the password contans a lowercase letters
-def has_lowercase(password):
-    global lower
-    lower = any(char.islower() for char in password)
-if lower == False:
-    print("Your password does not have a lowercase letter")
-if lower == True:
+else:
+    print("Your password does not have an uppercase letter")
+
+# we check for lowercase letters using an if statemnt and making sure that there is a lowercase letter in the password
+lower_found = False
+for char in password:
+    if char.islower():
+        lower_found = True
+        break
+if lower_found:
     print("Yes, contains lowercase")
     strength_score += 1
+else:
+    print("Your password does not have a lowercase letter")
 
-# After that we check if the password contains atleast one number 
-def has_digit_loop(password):
-    global digit
-    digit = False
-    for char in password:
-        if char.isdigit():
-            digit = True
-            break
-        return digit
-if digit == False:
-    print("Your password does not contain a number")
-if digit == True:
+# we then check if there is a number in the password 
+digit_found = False
+for char in password:
+    if char.isdigit():
+        digit_found = True
+        break
+if digit_found:
     print("Yes, contains a number")
     strength_score += 1
+else:
+    print("Your password does not contain a number")
 
-# after that we check if the password contains at least one special character
-def has_special_character(password):
-    global special
-    special_chars = string.punctuation
-    for char in password:
-        special = True
-    special = False
-if special == True:
+# At last we check if the password has any special characters
+special_found = False
+special_chars = string.punctuation
+for char in password:
+    if char in special_chars:
+        special_found = True
+        break
+if special_found:
     print("Yes, contains special character")
-    strength_score =+ 1
-if special == False:
+    strength_score += 1
+else:
     print("Your password does not have a special character")
 
-#  After the password is checked and all of those things are true we respond to the user and tell them that there password is strong
+# After the password is checked we tell the user their strength score out of 5 using a print statement
 print(f"Your password has a {strength_score}/5 strength score.")
-# If there password does not check some of those if and elifs then we must tell them their strength score
