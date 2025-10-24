@@ -6,15 +6,15 @@ caeser_encode = input("What is the message you want to encode: ")
 def caeser_encode(message, shift):
     print("How many times would you like me to shift your message? ")
 encoded_message = 
-    for char in message:
+for char in message:
         if 'a' <= char <= 'z':
             shifted_char = chr(((ord(char) - ord('a') + shift) % 26) + ord('a'))
         elif 'A" <= char <= 'z' :
             shifted_char = chr(((ord(char) - ord('a') + shift) % 26) + ord('A'))
         else:
              shifted_char = char
-            encoded_message += shifted_char
-        return encoded_message
+        encoded_message += shifted_char
+    return encoded_message
 
 
 
