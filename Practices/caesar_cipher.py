@@ -51,14 +51,9 @@ def main():
             continue_choice = input("\nDo you want to perform another operation? (yes/no): ").lower()
             if continue_choice != 'yes':
                 break
-# this we will use a value error to check if the use inputted something valid
-        except ValueError:
-            print("Invalid shift value. Please enter an integer.")
-        except Exception as e:
-            print(f"An error occurred: {e}")
 
+            
 if __name__ == "__main__":
     main()
-
 
 
