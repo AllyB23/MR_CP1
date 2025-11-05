@@ -13,4 +13,4 @@ for x in range(4):
 turtle.end_fill()
 
 turtle.penup()
-turtle.
+turtle.done()
