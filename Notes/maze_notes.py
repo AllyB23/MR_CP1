@@ -1,102 +1,149 @@
 import turtle
 import random
 
-GRID_SIZE = 6
-CELL_SIZE = 80
-SCREEN_SIZE = GRID_SIZE * CELL_SIZE
-wn = turtle.Screen()
-wn.setup(width=600, height=600)
-wn.title("6x6 Turtle Maze")
-wn.bgcolor("lightgray")
+# --- Configuration Variables ---
+GRID_ROWS_COUNT = 6
+GRID_COLS_COUNT = 6
+START_POINT = (0, 0)
+END_POINT = (5, 5) # Adjusted to be 0-indexed (row 5, column 5)
 
-maze_drawer = turtle.Turtle()
-maze_drawer.speed(0)
-maze_drawer.hideturtle()
-maze_drawer.color("black")
-maze_drawer.pensize(2)
-columns = turtle.Turtle()
-rows = turtle.Turtle()
+# Variables for the maze representation
+maze_wall_char = '#'
+maze_path_char = ' '
 
-grid = [[0 for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
+# Global variable to store the generated grid
+maze_grid = []
 
-def generate_maze(x, y):
-    grid[y][x] = 1
+# --- Function Definitions ---
 
-    directions = [(0, -1), (1, 0), (-1, 0)]
-    random.shuffle(directions)
-    for dx, dy in directions:
-        nx, ny = x + dx * 2, y + dy * 2 # Next cell to visit (jump over a wall)
+def generate_random_grid():
+    """
+    Generates a 2D grid using the global configuration variables,
+    filled randomly with walls and open paths.
 
-        if 0 <= nx < GRID_SIZE and 0 <= ny < GRID_SIZE and grid[ny][nx] == 0:
-            # Carve a path through the wall between current and next cell
-            # The wall location is (x+dx, y+dy)
-            # In this implementation, marking the cell as visited "removes" the wall
+    Returns:
+        list of list: A 2D list representing the maze grid.
+    """
+    grid = []
+    # Use the variable defined earlier for the number of rows
+    for r in range(GRID_ROWS_COUNT):
+        row = []
+        # Use the variable defined earlier for the number of columns
+        for c in range(GRID_COLS_COUNT):
+            # Randomly decide if a cell is a path or a wall using our variables
+            if random.random() < 0.7: # 70% chance of being a path
+                row.append(maze_path_char)
+            else:
+                row.append(maze_wall_char)
+        grid.append(row)
 
-            # Move to the neighboring cell that was skipped over (the wall)
-            grid[y + dy][x + dx] = 1 
-            # Recursively call the function for the new cell
-            generate_maze(nx, ny)
-
-# Start generation from the top-left corner
-generate_maze(0, 0)
-# --------------------
-
-# --- Drawing Function ---
-
-def draw_maze():
-    maze_drawer.penup()
-    # Draw the outer boundary first
-    maze_drawer.goto(0, 0)
-    maze_drawer.pendown()
-    for _ in range(4):
-        maze_drawer.forward(SCREEN_SIZE)
-        maze_drawer.right(90)
-    maze_drawer.penup()
+    # Ensure start and end points are always open paths
+    grid[START_POINT[0]][START_POINT[1]] = maze_path_char
+    grid[END_POINT[0]][END_POINT[1]] = maze_path_char
     
-    # Draw internal walls based on the generated grid
-    for y in range(GRID_SIZE):
-        for x in range(GRID_SIZE):
-            cell_x = x * CELL_SIZE
-            cell_y = y * CELL_SIZE
+    return grid
+
+def is_maze_solvable(grid, start, end):
+    """
+    Checks if a path exists from start to end using Breadth-First Search (BFS)
+    without using the collections module (uses a standard list as a queue).
+    """
+    rows = len(grid)
+    cols = len(grid)
+    # Using a standard Python list as a queue (FIFO)
+    queue = [start] 
+    visited = set([start])
+    
+    # Possible movements: up, down, left, right
+    directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+
+    while queue:
+        # Use list.pop(0) to get the first element (FIFO behavior)
+        current_r, current_c = queue.pop(0) 
+        
+        if (current_r, current_c) == end:
+            return True
+
+        for dr, dc in directions:
+            next_r, next_c = current_r + dr, current_c + dc
             
-            # Check the "path" cell to the right (representing the left wall of next cell)
-            if x < GRID_SIZE - 1 and grid[y][x+1] == 0:
-                 # Draw vertical wall
-                maze_drawer.goto(cell_x + CELL_SIZE, cell_y)
-                maze_drawer.pendown()
-                maze_drawer.goto(cell_x + CELL_SIZE, cell_y + CELL_SIZE)
-                maze_drawer.penup()
+            # Check if the next cell is within bounds and not a wall using our variables
+            if 0 <= next_r < rows and 0 <= next_c < cols and \
+               grid[next_r][next_c] == maze_path_char and \
+               (next_r, next_c) not in visited:
+                
+                visited.add((next_r, next_c))
+                # Use list.append() to add to the end of the queue
+                queue.append((next_r, next_c)) 
+                
+    return False
 
-            # Check the "path" cell below (representing the top wall of cell below)
-            if y < GRID_SIZE - 1 and grid[y+1][x] == 0:
-                # Draw horizontal wall
-                maze_drawer.goto(cell_x, cell_y + CELL_SIZE)
-                maze_drawer.pendown()
-                maze_drawer.goto(cell_x + CELL_SIZE, cell_y + CELL_SIZE)
-                maze_drawer.penup()
+def draw_maze(grid, cell_size=30):
+    """
+    Uses the turtle library to draw the generated maze grid.
+    """
+    t = turtle.Turtle()
+    screen = turtle.Screen()
+    screen.setup(width=len(grid) * cell_size + 50, height=len(grid) * cell_size + 50)
+    screen.bgcolor("white")
+    t.speed(0) # Fastest drawing speed
+    t.hideturtle()
+    t.penup()
 
-    # Define start and end points visually
-    maze_drawer.color("green")
-    maze_drawer.goto(CELL_SIZE * 0.5, CELL_SIZE * 0.5)
-    maze_drawer.dot(CELL_SIZE * 0.4)
-    
-    maze_drawer.color("red")
-    maze_drawer.goto(CELL_SIZE * (GRID_SIZE - 0.5), CELL_SIZE * (GRID_SIZE - 0.5))
-    maze_drawer.dot(CELL_SIZE * 0.4)
+    # Calculate initial position to center the maze
+    start_x = -(len(grid) * cell_size) / 2
+    start_y = (len(grid) * cell_size) / 2
+
+    for r in range(len(grid)):
+        for c in range(len(grid)):
+            x = start_x + c * cell_size
+            y = start_y - r * cell_size
+            
+            t.goto(x, y)
+            t.pendown()
+            
+            # Use our variable to check for a wall
+            if grid[r][c] == maze_wall_char:
+                t.fillcolor("black")
+                t.begin_fill()
+                for _ in range(4):
+                    t.forward(cell_size)
+                    t.right(90)
+                t.end_fill()
+            elif (r, c) == START_POINT:
+                t.fillcolor("green") # Start point color
+                t.begin_fill()
+                for _ in range(4):
+                    t.forward(cell_size)
+                    t.right(90)
+                t.end_fill()
+            elif (r, c) == END_POINT:
+                t.fillcolor("red") # End point color
+                t.begin_fill()
+                for _ in range(4):
+                    t.forward(cell_size)
+                    t.right(90)
+                t.end_fill()
+            
+            t.penup()
+
+    print(f"Start point: {START_POINT}, End point: {END_POINT}")
 
 
-draw_maze()
-wn.tracer(1) # Re-enable updates to show
+# --- Main Logic ---
 
+# 1. Generate the grid repeatedly until a solvable one is found
+while True:
+    # Call the function to generate a grid using the global variables
+    maze_grid = generate_random_grid() 
+    if is_maze_solvable(maze_grid, START_POINT, END_POINT):
+        print("Solvable maze generated.")
+        break
+    else:
+        continue
 
-columns = [1,1,1,0,0,00,1,1,1,1]
-rows = [1,1,1,0,0,1,1,0,0,1,1,1]
+# 2. Draw the solvable maze
+draw_maze(maze_grid)
 
-
-
-
-
-grid_columns = ()
-grid_rows = ()
-
+# 3. Keep the turtle window open until manually closed
 turtle.done()
