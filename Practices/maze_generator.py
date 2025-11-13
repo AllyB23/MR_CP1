@@ -4,8 +4,19 @@ import turtle
 import random
 #we have to set the variables for the grid columns and the grid rows, and all the other details of the grid
 
-num_cols = [[1,0,1,],[],[],[],[],[]]
-grid_rows = [[],[],[],[],[],[]]
+num_cols = [[random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1)],
+[random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),],
+[random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1)],
+[random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1)],
+[random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1)],
+[random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1)]]
+
+grid_rows = [[random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1)],
+[random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1)],
+[random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1)],
+[random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1)],
+[random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1)],
+[random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1),random.randint(0,1)]]
 row_heights = 50
 grid_width = 100
 c_width  = 50
@@ -23,31 +34,31 @@ def draw_complete_grid(grid_rows, num_cols, row_heights, grid_width, start_point
     t.goto(start_point_x, starting_point_y)
     t.pendown
 
-    for i in range(6): 
+    for i, row in enumerate(grid_rows):
         current_y = starting_point_y - i * c_width
         t.penup()
         t.goto(start_point_x, current_y)
-        t.pendown()
-        t.forward(row_length)
-
-    for i in range(6):
-        t.penup()
-        current_x = start_point_x + i * c_width
-        t.goto(current_x, starting_point_y)
-        t.pendown()
-        t.right(90)
-        t.forward(row_length) 
-        t.left(90)
-def mark_cells(grid_rows, row_heights, c_width, start_poin_x, starting_point_y):
-    for row_index, row_data in range(grid_rows):
-        for col_index, cell_value in range(row_data):
-            if cell_value == 1:
-                # Calculate the center position of the cell
-                cell_center_x = start_point_x + col_index * c_width + c_width / 2
-                cell_center_y = starting_point_y - row_index * row_heights - row_heights / 2
-                t.penup()
-                t.goto(cell_center_x, cell_center_y)
+        for columns in row:
+            if columns == 1:
                 t.pendown()
+                t.forward(50)
+            if columns == 0:
+                t.penup()
+                t.forward(50)
+
+    t.right(90)
+    for i, columns in enumerate(num_cols):
+        current_x = start_point_x + i * c_width
+        t.penup()
+        t.goto(current_x, starting_point_y)
+        for row in columns:
+            if row == 1:
+                t.pendown()
+                t.forward(50)
+            if row == 0:
+                t.penup()
+                t.forward(50)
+
 
 draw_complete_grid(
     grid_rows, 
@@ -58,15 +69,9 @@ draw_complete_grid(
     starting_point_y
 )
 
-# Mark the cells using the data structure
-mark_cells(
-    grid_rows, 
-    row_heights, 
-    c_width, 
-    start_point_x, 
-    starting_point_y
-)
-
+def maze_solvable(current_x, current_y, grid_rows, num_cols)
+    
+    if current_x +1 < 
 
 
 # we need at least 3 functions
