@@ -69,9 +69,9 @@ draw_complete_grid(
     starting_point_y
 )
 
-def maze_solvable(current_x, current_y, grid_rows, num_cols)
+def maze_solvable(current_x, current_y, grid_rows, num_cols):
     
-    if current_x +1 < 
+
 
 
 # we need at least 3 functions
@@ -85,4 +85,4 @@ def maze_solvable(current_x, current_y, grid_rows, num_cols)
 # we will use turtle to draw the maze
 # we will code all the turtle setting so it looks like it is drawing the maze
 # turtle always has to move the same way but if it over runs then we have to check that\
-turtle.done()
+    turtle.done()
