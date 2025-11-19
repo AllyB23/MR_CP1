@@ -3,27 +3,45 @@
 # write a print statement that welcome sthe user into the flexible calculator
 print("Welcome to the Flexible Calculator!")
 # We will make args to show the avaiable operations we cand o for the calculator
-options = input("Which operation would you like to perform? avergae\n sum\n max\n min\n product\n")
+options = int(input(1.average, 2.maximum, 3. minimum, 4.sum, 5.product))
+
+if (1)
 
 
 # we will mkae  afcuntions with an arg insode sp they can select which option they want
 def average(*nums):
-    int(input("Please enter the numbers that you want to average: "))
+    if not nums:
+          return None
+    total_sum = sum(nums)
+    count = len(nums)
+    return total_sum / count
 
 
 def max(*nums):
+        return max(*nums)
 
 
-    def sum(*nums):
-        total = 0
+def sum(*nums):
+    total = 0
+    for num in nums:
+        total += sum
+    return total
+print(sum)
+
     
 
 
-        def min(*nums):
+def min(*nums):
+        return min(*nums)
 
 
-                def product(*nums):
-                     r
+def product(*nums):
+      product = 0
+      for product in nums:
+            product *= nums
+        return product
+      
+                     
 
 
 
