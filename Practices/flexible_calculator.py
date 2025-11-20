@@ -4,12 +4,12 @@
 print("Welcome to the Flexible Calculator!")
 # We will make args to show the avaiable operations we cand o for the calculator
 print("What operation would you like to perform?")
-options = input(
+options = int(input(
     "1.Average\n"
     "2.Maximum\n"
     "3.Minimum\n"
     "4.Sum\n"
-    "5.Product\n")
+    "5.Product\n"))
 
 how_many_numbers = int(input("How many numbers will you be using? "))
 numbers = []
@@ -40,7 +40,6 @@ def sum(*nums):
     for num in nums:
         total += sum
     return total
-print(sum)
 
 
 def minimum(*nums):
@@ -63,18 +62,23 @@ operations_name = ""
 if options == 1:
     result = average(numbers)
     operation_name = "Average"
+    print(result)
 elif options == 2:
     result = maximum(numbers)
     operation_name = "Maximum"
+    print(result)
 elif options == 3:
     result = minimum(numbers)
     operation_name = "Minimum"
+    print(result)
 elif options == 4:
     result = sum(numbers)
     operation_name = "Sum"
+    print(result)
 elif options == 5:
     result = product(numbers)
     operation_name = "Product"
+    print(result)
 
 else:
      print("That is not valid.")
