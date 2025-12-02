@@ -9,10 +9,22 @@
 # We will make other variables that establish the stats of all the players.
 # No matter what character they choose they will have the same stats but they have different abilities
 # VARIABLES
-"Character:"
-"Health:"
-"Abilities:"
-"    "
+
+#Lola Bunny: {}
+#Bugs Bunny: {}
+#Tweety: {}
+#Granny: {}
+#LeBron James: {}
+#Daffy Duck: {}
+#Porky Pig: {}
+# Inside of the characters dictionaries we will put these variables:
+""" Basketball_IQ:[]
+    Stamina/Durability:[]
+    Looney_Ablilities:[]
+    Strength:[]
+    Speed:[]
+    Shooting:[]
+    """
 # FUNCTIONS/WORLDS
 """Earth: LeBron James(player)
 DC World (Gotham city/ Metropolis): Daffy Duck(Player)
@@ -24,9 +36,41 @@ Casablanca world
 Serververse: Al-G Rythm(Villain/Antagonist)
 Thundera(Thundercats universe)
 Tune World: bugs bunny(character)"""
+# User input to ask them what world they would like to go to
+# IF statements to decide which world to travel because they only have the the option of 3 to choose from
+
+# DEF Earth():
+    # We will check earth if there is any players to recruit 
+    # If there is none return False
+# DEF DC World():
+    # We will check earth if there is any players to recruit 
+    # If there is none return False
+
+# DEF Mad Max Universe():
+    # We will check earth if there is any players to recruit 
+    # If there is none return False
+# DEF Austin Powers World():
+    # We will check earth if there is any players to recruit 
+    # If there is none return False
+# DEF Wizard of Oz World():
+    # We will check earth if there is any players to recruit 
+    # If there is none return False
+# DEF Hogwarts():
+    # We will check earth if there is any players to recruit 
+    # If there is none return False
+# DEF Casablanca World():
+    # We will check earth if there is any players to recruit 
+    # If there is none return False
+# DEF Serververse():
+    # We will check earth if there is any players to recruit 
+    # If there is none return False
+# DEF Thundera():
+     # We will check earth if there is any players to recruit 
+    # If there is none return False
+# DEF Tune World():
 
 # From each world they must recruit a player to move on to the next world
 # Make if statements to direct you to the rooms 
 # We will start with a function using nested loops or what if statements
-# 
+# Their scores will be Measured by using the Looney Meter
 
