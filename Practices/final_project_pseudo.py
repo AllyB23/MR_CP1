@@ -9,7 +9,6 @@
 # We will make other variables that establish the stats of all the players.
 # No matter what character they choose they will have the same stats but they have different abilities
 # VARIABLES
-
 #Lola Bunny: {}
 #Bugs Bunny: {}
 #Tweety: {}
@@ -51,7 +50,6 @@ Tune World: bugs bunny(character)"""
     # If the character is Daffy Duck then the player will come to this room/world and choose who to go recruit next
     # We will check earth if there is any players to recruit 
     # If there is none return False
-
 # DEF Mad Max Universe():
     # if the character is Bugs Bunny the player wil start out on Mad Max Universe
     # We will check earth if there is any players to recruit 
@@ -75,7 +73,6 @@ Tune World: bugs bunny(character)"""
      # We will check earth if there is any players to recruit 
     # If there is none return False
 # DEF Tune World():
-
 # From each world they must recruit a player to move on to the next world
 # Make if statements to direct you to the rooms 
 # We will start with a function using nested loops or what if statements
