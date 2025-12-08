@@ -22,20 +22,29 @@ shooting = 5}
 
 
 def earth():
+    print("You are currently on earth.")
     pass
 def DC_World():
+    print("You are currently in DC World.")
     pass
 def Mad_Max_universe():
+    print("You are currently in Mad Max Universe.")
     pass
 def Austin_powers_world():
+    print("You are currently in Austin Powers World.")
     pass
 def Wizard_of_oz_world():
+    print("You are currently in Austin Powers world.")
     pass
 def Hogwarts():
+    print("You are currently in Hogwarts.")
     pass
-def casavlanca_world():
+def casablanca_world():
+    print("You are currently in Casablanca world.")
     pass
 def Thundera():
+    print("You are currently in Thundera.")
     pass
 def serververse():
+    print("You currently in the serververse.")
     pass
