@@ -59,12 +59,22 @@ the_white_mamba = True
 wet_fire = True
 chronos = True
 
+player_check = input("Would you like to check if there is any players in this world?")
+
+def check_for_players():
+        print(player_check)
+    if player_check = "yes" 
+    elif player_check = "no"
+    else:
+        print("Please enter a valid option")
 
 #if characters == "LeBron James"():
    # pass
 
 def earth():
     print("You are currently on earth.")
+    check_for_players()
+
     pass
 def DC_World():
     print("You are currently in DC World.")
