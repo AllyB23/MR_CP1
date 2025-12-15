@@ -28,14 +28,7 @@ def intro():
 
 choice = input("Welcome to Serververse Showdown.\n The game has been hacked, the players are missing,\n and it's up to you to assemble the ultimate team and reclaim the court.\n Ready to play for a chance at freedom?\n").lower()
 
-if choice == ('yes'):
-    print_slow("okay! let's go!")
-    print_slow("You will be traveling to different worlds\n and going to recruit the players to play the ultimate game of basketball!")
-    print_slow("You have to save the toons from the other worlds\n and get back to your family!")
-#elif choice ==("no"):
-    print_slow("okay, thank you.")
-else:
-    print_slow("Please enter a valid option.")
+
 
 """player_stats: {
 basketball_IQ: 5, 
@@ -166,3 +159,12 @@ def serververse():
 def toon_world():
     print("You are finally here!\n It is time to play the ultimate game of basketball!")
     pass
+if choice == ('yes'):
+    print_slow("okay! let's go!")
+    print_slow("You will be traveling to different worlds\n and going to recruit the players to play the ultimate game of basketball!")
+    print_slow("You have to save the toons from the other worlds\n and get back to your family!")
+elif choice ==("no"):
+    print_slow("okay, thank you.")
+    
+else:
+    print_slow("Please enter a valid option.")
